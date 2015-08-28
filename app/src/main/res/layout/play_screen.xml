@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="@drawable/bb_background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hit"
+            android:id="@+id/hitButton"
+            android:onClick="drawCard"
+            android:background="@drawable/abc_list_selector_background_transition_holo_dark"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stand"
+            android:id="@+id/standButton"
+            android:background="@drawable/abc_list_selector_background_transition_holo_dark"
+            android:onClick="callStand"
+            android:layout_below="@+id/dealerTextView"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Dealer"
+            android:id="@+id/dealerTextView"
+            android:typeface="serif"
+            android:layout_above="@+id/hitButton"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Player"
+            android:id="@+id/playerTextView"
+            android:layout_below="@+id/hitButton"
+            android:layout_alignLeft="@+id/dealerTextView"
+            android:layout_alignStart="@+id/dealerTextView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Score: "
+            android:id="@+id/scoreTextView"
+            android:textColor="#ffff3431"
+            android:textSize="@dimen/abc_text_size_display_1_material"
+            android:layout_below="@+id/playerTextView"
+            android:layout_centerHorizontal="true" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/dealerTextView"
+            android:layout_toRightOf="@+id/playerTextView"
+            android:layout_toEndOf="@+id/playerTextView"
+            android:id="@+id/frameLayout">
+
+            <ImageView
+                android:layout_width="69dp"
+                android:layout_height="105dp"
+                android:id="@+id/imageView"
+                android:layout_gravity="right|top"
+                android:background="@drawable/deckpicture" />
+        </FrameLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Replay?"
+            android:id="@+id/replayButton"
+            android:visibility="invisible"
+            android:background="@drawable/abc_list_selector_background_transition_holo_dark"
+            android:onClick="replay"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/scoreTextView">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cardPic0"
+                android:layout_gravity="center_vertical"
+                android:minHeight="100dp"
+                android:minWidth="75dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cardPic1"
+                android:layout_gravity="center_vertical"
+                android:minHeight="100dp"
+                android:minWidth="75dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cardPic2"
+                android:layout_gravity="center_vertical"
+                android:minHeight="100dp"
+                android:minWidth="75dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cardPic3"
+                android:layout_gravity="center_vertical"
+                android:minHeight="100dp"
+                android:minWidth="75dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cardPic4"
+                android:layout_gravity="center_vertical"
+                android:minHeight="100dp"
+                android:minWidth="75dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cardPic5"
+                android:layout_gravity="center_vertical" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cardPic6"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignBottom="@+id/frameLayout"
+            android:layout_toLeftOf="@+id/standButton"
+            android:layout_toStartOf="@+id/standButton">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dealerCard0"
+                android:layout_gravity="center_vertical"
+                android:minHeight="100dp"
+                android:minWidth="75dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dealerCard1"
+                android:layout_gravity="center_vertical"
+                android:minHeight="100dp"
+                android:minWidth="75dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dealerCard2"
+                android:layout_gravity="center_vertical"
+                android:minHeight="100dp"
+                android:minWidth="75dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dealerCard3"
+                android:layout_gravity="center_vertical"
+                android:minHeight="100dp"
+                android:minWidth="75dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dealerCard4"
+                android:layout_gravity="center_vertical"
+                android:minHeight="100dp"
+                android:minWidth="75dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>
