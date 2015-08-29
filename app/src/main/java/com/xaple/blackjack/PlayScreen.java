@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,7 +40,16 @@ public class PlayScreen extends Activity {
     Button hitButton;
     Button standButton;
     Button replayButton;
+    Button betButton;
     ImageView cardPic;
+    ImageButton chip_5;
+    ImageButton chip_25;
+    ImageButton chip_100;
+    ImageButton chip_500;
+
+    TextView betText;
+    TextView bankText;
+    TextView statusText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +63,17 @@ public class PlayScreen extends Activity {
         hitButton = (Button) findViewById(R.id.hitButton);
         standButton = (Button) findViewById(R.id.standButton);
         replayButton = (Button) findViewById(R.id.replayButton);
+        betButton = (Button) findViewById(R.id.betButton);
+
+        betText = (TextView) findViewById(R.id.betTextView);
+        bankText = (TextView) findViewById(R.id.bankTextView);
+        statusText = (TextView) findViewById(R.id.scoreTextView);
 
         newGame.startGame();
-        replay();
+
+        newGame.player.setBank(10000);
+
+        bettingPhase();
     }
 
     public void drawCard(View v){
@@ -73,11 +91,10 @@ public class PlayScreen extends Activity {
     }
 
     public void changeScore(int score){
-        TextView tV = (TextView) findViewById(R.id.scoreTextView);
-        newGame.scoreTextView = tV;
-        tV.setText("Score: " + score);
+        newGame.scoreTextView = statusText;
+        statusText.setText("");
         if(newGame.checkScore() != null){
-            tV.setText("Bust!");
+            statusText.setText("Bust!");
 
             hitButton.setEnabled(false);
             standButton.setEnabled(false);
@@ -86,19 +103,52 @@ public class PlayScreen extends Activity {
     }
 
     public void replay(View v) {
+        clearCardImages();
+        bettingPhase();
+    }
+
+    private void bettingPhase() {
+        betText.setText("Bet");
+        statusText.setText("Place Your Bet!");
+        newGame.player.setCurrentBet(0);
+
+        replayButton.setVisibility(View.INVISIBLE);
+
+
+        chip_5 = (ImageButton) findViewById(R.id.chip_5);
+        chip_25 = (ImageButton) findViewById(R.id.chip_25);
+        chip_100 = (ImageButton) findViewById(R.id.chip_100);
+        chip_500 = (ImageButton) findViewById(R.id.chip_500);
+
+        chip_5.setEnabled(true);
+        chip_25.setEnabled(true);
+        chip_100.setEnabled(true);
+        chip_500.setEnabled(true);
+
+        hitButton.setEnabled(false);
+        standButton.setEnabled(false);
+
+        betButton.setEnabled(true);
+        betButton.setVisibility(View.VISIBLE);
+    }
+
+    public void placeBet(View v) {
+        betButton.setEnabled(false);
+        betButton.setVisibility(View.INVISIBLE);
         replay();
     }
 
     public void replay () {
+
+        chip_5.setEnabled(false);
+        chip_25.setEnabled(false);
+        chip_100.setEnabled(false);
+        chip_500.setEnabled(false);
+
         newGame.replay();
         hitButton.setEnabled(true);
         standButton.setEnabled(true);
         replayButton.setVisibility(View.INVISIBLE);
-
-        for (Integer x : imageIDs) {
-            cardPic = (ImageView) findViewById(x);
-            cardPic.setImageDrawable(null);
-        }
 
         newGame.drawCard(newGame.player);
         newGame.drawCard(newGame.player);
@@ -112,18 +162,13 @@ public class PlayScreen extends Activity {
             i++;
         }
 
-        for ( Integer x: dealImgIDs) {
-
-            cardPic = (ImageView) findViewById(x);
-            cardPic.setImageDrawable(null);
-        }
-
         Card temp = newGame.dealer.hand.GetCardAt(0);
         cardPic = (ImageView) findViewById(dealImgIDs[0]);
         cardPic.setImageResource(cardPics[temp.GetCardValue()]);
 
         if (newGame.player.hand.GetHandScore() == 21) {
             newGame.scoreTextView.setText("BLACKJACK!");
+            newGame.player.addToBank(newGame.player.getCurrentBet()*(5/2));
             gameOverState();
         }
     }
@@ -137,16 +182,63 @@ public class PlayScreen extends Activity {
             cardPic = (ImageView) findViewById(dealImgIDs[i]);
             cardPic.setImageResource(cardPics[c.GetCardValue()]);
             i++;
+            if (i > 5) break;
         }
         gameOverState();
     }
 
     public void gameOverState() {
 
+        bankText.setText("Bank\n" + newGame.player.getBank());
         hitButton.setEnabled(false);
         standButton.setEnabled(false);
         replayButton.setVisibility(View.VISIBLE);
     }
 
 
+    public void addBet(View view) {
+
+
+        switch( view.getTag().toString() ) {
+            case "5":
+                if(newGame.player.getBank() < 5) break;
+
+                newGame.player.addBet(5);
+                betText.setText("Bet\n" + newGame.player.getCurrentBet());
+                break;
+            case "25":
+                if(newGame.player.getBank() < 25) break;
+
+                newGame.player.addBet(25);
+                betText.setText("Bet\n" + newGame.player.getCurrentBet());
+                break;
+            case "100":
+                if(newGame.player.getBank() < 100) break;
+
+                newGame.player.addBet(100);
+                betText.setText("Bet\n" + newGame.player.getCurrentBet());
+                break;
+            case "500":
+                if(newGame.player.getBank() < 500) break;
+
+                newGame.player.addBet(500);
+                betText.setText("Bet\n" + newGame.player.getCurrentBet());
+                break;
+        }
+        bankText.setText("Bank\n" + newGame.player.getBank());
+
+    }
+    void clearCardImages() {
+
+        for (Integer x : imageIDs) {
+            cardPic = (ImageView) findViewById(x);
+            cardPic.setImageDrawable(null);
+        }
+
+        for ( Integer x: dealImgIDs) {
+
+            cardPic = (ImageView) findViewById(x);
+            cardPic.setImageDrawable(null);
+        }
+    }
 }

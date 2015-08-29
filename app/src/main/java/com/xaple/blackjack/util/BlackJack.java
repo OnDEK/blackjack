@@ -54,9 +54,11 @@ public class BlackJack {
         }
         else if(dealer.hand.GetHandScore() == player.hand.GetHandScore()){
             scoreTextView.setText("Push!");
+            player.addToBank(player.getCurrentBet());
         }
         else {
             scoreTextView.setText("Player Wins!");
+            player.addToBank(player.getCurrentBet()*2);
         }
     }
 

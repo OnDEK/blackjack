@@ -6,6 +6,11 @@
     android:weightSum="1"
     android:background="@drawable/bb_background">
 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"></TableLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,39 +35,9 @@
             android:id="@+id/standButton"
             android:background="@drawable/abc_list_selector_background_transition_holo_dark"
             android:onClick="callStand"
-            android:layout_below="@+id/dealerTextView"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Dealer"
-            android:id="@+id/dealerTextView"
-            android:typeface="serif"
-            android:layout_above="@+id/hitButton"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Player"
-            android:id="@+id/playerTextView"
-            android:layout_below="@+id/hitButton"
-            android:layout_alignLeft="@+id/dealerTextView"
-            android:layout_alignStart="@+id/dealerTextView" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Score: "
-            android:id="@+id/scoreTextView"
-            android:textColor="#ffff3431"
-            android:textSize="@dimen/abc_text_size_display_1_material"
-            android:layout_below="@+id/dealerTextView"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/frameLayout" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -70,25 +45,26 @@
             android:layout_toEndOf="@+id/linearLayout"
             android:id="@+id/frameLayout"
             android:layout_toRightOf="@+id/linearLayout"
-            android:layout_alignBottom="@+id/dealerTextView">
+            android:layout_above="@+id/hitButton">
 
             <ImageView
                 android:layout_width="69dp"
                 android:layout_height="105dp"
                 android:id="@+id/imageView"
-                android:layout_gravity="right|top"
+                android:layout_gravity="right|center_vertical"
                 android:background="@drawable/deckpicture"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="7dp" />
+
         </FrameLayout>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Replay?"
+            android:text="Replay"
             android:id="@+id/replayButton"
-            android:visibility="invisible"
-            android:background="@drawable/abc_list_selector_background_transition_holo_dark"
+            android:visibility="visible"
+
             android:onClick="replay"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
@@ -99,10 +75,11 @@
             android:layout_height="match_parent"
             android:weightSum="1"
             android:layout_alignBottom="@+id/replayButton"
-            android:layout_below="@+id/playerTextView"
             android:layout_toRightOf="@+id/hitButton"
             android:layout_toLeftOf="@+id/standButton"
-            android:layout_toStartOf="@+id/standButton">
+            android:layout_toStartOf="@+id/standButton"
+            android:layout_below="@+id/hitButton"
+            android:id="@+id/linearLayout2">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -163,11 +140,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
-            android:layout_alignBottom="@+id/frameLayout"
             android:layout_toLeftOf="@+id/standButton"
             android:layout_toRightOf="@+id/hitButton"
             android:layout_toEndOf="@+id/hitButton"
-            android:id="@+id/linearLayout">
+            android:id="@+id/linearLayout"
+            android:layout_alignBottom="@+id/frameLayout">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -211,5 +188,156 @@
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bank"
+            android:id="@+id/bankTextView"
+            android:textIsSelectable="true"
+            android:phoneNumber="false"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/replayButton"
+            android:layout_toLeftOf="@+id/linearLayout2"
+            android:layout_toStartOf="@+id/linearLayout2"
+            android:enabled="false"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:textColor="#ff5366" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bet"
+            android:id="@+id/betTextView"
+            android:textIsSelectable="true"
+            android:phoneNumber="false"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/standButton"
+            android:layout_alignStart="@+id/standButton"
+            android:layout_alignTop="@+id/replayButton"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="20dp"
+            android:textColor="#ff5366"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/frameLayout"
+            android:layout_toRightOf="@+id/hitButton"
+            android:layout_toLeftOf="@+id/betTextView"
+            android:layout_toStartOf="@+id/betTextView"
+            android:layout_above="@+id/linearLayout2"
+            >
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chip_5"
+                android:background="@drawable/red_5"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:tag="5"
+                android:onClick="addBet"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chip_25"
+                android:background="@drawable/green_25"
+                android:layout_above="@+id/linearLayout2"
+                android:layout_toRightOf="@+id/chip_5"
+                android:layout_toEndOf="@+id/chip_5"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:tag="25"
+                android:onClick="addBet"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Place Bet"
+                android:id="@+id/betButton"
+                android:background="@drawable/abc_list_selector_background_transition_holo_dark"
+                android:onClick="placeBet"
+                android:layout_row="0"
+                android:layout_column="5"
+                android:layout_alignParentBottom="true"
+                android:layout_alignLeft="@+id/scoreTextView"
+                android:layout_alignStart="@+id/scoreTextView"
+                android:visibility="invisible" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chip_100"
+                android:background="@drawable/black_100"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/scoreTextView"
+                android:layout_toEndOf="@+id/scoreTextView"
+                android:layout_row="0"
+                android:layout_column="6"
+                android:tag="100"
+                android:onClick="addBet"/>
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chip_500"
+                android:background="@drawable/purp_500"
+                android:layout_alignBottom="@+id/chip_100"
+                android:layout_toLeftOf="@+id/standButton"
+                android:layout_toStartOf="@+id/standButton"
+                android:layout_row="0"
+                android:layout_column="7"
+                android:tag="500"
+                android:onClick="addBet"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scoreTextView"
+            android:textColor="#ffff3431"
+            android:textSize="@dimen/abc_text_size_display_1_material"
+            android:layout_centerHorizontal="true" />
+
     </RelativeLayout>
+
 </LinearLayout>
