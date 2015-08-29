@@ -61,23 +61,25 @@
             android:id="@+id/scoreTextView"
             android:textColor="#ffff3431"
             android:textSize="@dimen/abc_text_size_display_1_material"
-            android:layout_below="@+id/playerTextView"
+            android:layout_below="@+id/dealerTextView"
             android:layout_centerHorizontal="true" />
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/dealerTextView"
-            android:layout_toRightOf="@+id/playerTextView"
-            android:layout_toEndOf="@+id/playerTextView"
-            android:id="@+id/frameLayout">
+            android:layout_toEndOf="@+id/linearLayout"
+            android:id="@+id/frameLayout"
+            android:layout_toRightOf="@+id/linearLayout"
+            android:layout_alignBottom="@+id/dealerTextView">
 
             <ImageView
                 android:layout_width="69dp"
                 android:layout_height="105dp"
                 android:id="@+id/imageView"
                 android:layout_gravity="right|top"
-                android:background="@drawable/deckpicture" />
+                android:background="@drawable/deckpicture"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="7dp" />
         </FrameLayout>
 
         <Button
@@ -95,9 +97,12 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/scoreTextView">
+            android:weightSum="1"
+            android:layout_alignBottom="@+id/replayButton"
+            android:layout_below="@+id/playerTextView"
+            android:layout_toRightOf="@+id/hitButton"
+            android:layout_toLeftOf="@+id/standButton"
+            android:layout_toStartOf="@+id/standButton">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -140,16 +145,17 @@
                 android:minWidth="75dp" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="78dp"
+                android:layout_height="100dp"
                 android:id="@+id/cardPic5"
                 android:layout_gravity="center_vertical" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="44dp"
+                android:layout_height="130dp"
                 android:id="@+id/cardPic6"
-                android:layout_gravity="center_vertical" />
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.16" />
         </LinearLayout>
 
         <LinearLayout
@@ -159,7 +165,9 @@
             android:layout_alignParentTop="true"
             android:layout_alignBottom="@+id/frameLayout"
             android:layout_toLeftOf="@+id/standButton"
-            android:layout_toStartOf="@+id/standButton">
+            android:layout_toRightOf="@+id/hitButton"
+            android:layout_toEndOf="@+id/hitButton"
+            android:id="@+id/linearLayout">
 
             <ImageView
                 android:layout_width="wrap_content"

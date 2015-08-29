@@ -1,6 +1,7 @@
 package com.xaple.blackjack;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -46,13 +47,15 @@ public class PlayScreen extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.setContentView(R.layout.play_screen);
-        //dealerList = (TextView) findViewById(R.id.dealerCardList);
-        //newGame.dealerList = dealerList;
 
-        newGame.startGame();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE);
+
         hitButton = (Button) findViewById(R.id.hitButton);
         standButton = (Button) findViewById(R.id.standButton);
         replayButton = (Button) findViewById(R.id.replayButton);
+
+        newGame.startGame();
+        replay();
     }
 
     public void drawCard(View v){
@@ -83,7 +86,10 @@ public class PlayScreen extends Activity {
     }
 
     public void replay(View v) {
+        replay();
+    }
 
+    public void replay () {
         newGame.replay();
         hitButton.setEnabled(true);
         standButton.setEnabled(true);
@@ -116,9 +122,10 @@ public class PlayScreen extends Activity {
         cardPic = (ImageView) findViewById(dealImgIDs[0]);
         cardPic.setImageResource(cardPics[temp.GetCardValue()]);
 
-//        cardPic = (ImageView) findViewById(dealImgIDs[1]);
-//        cardPic.setImageDrawable(R.drawable.deckpicture);
-
+        if (newGame.player.hand.GetHandScore() == 21) {
+            newGame.scoreTextView.setText("BLACKJACK!");
+            gameOverState();
+        }
     }
 
     public void callStand(View v) {

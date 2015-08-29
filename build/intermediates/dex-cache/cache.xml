@@ -2,11 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\kaosp\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jar="D:\From Win 8\workspace\blackjack\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="D:\From Win 8\workspace\blackjack\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-807673f766f3c46e7a660ab4498c4224feb9dac9.jar" />
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="D:\From Win 8\workspace\blackjack\app\build\intermediates\pre-dexed\debug\classes-fb292fa7f81cbe7daf567479599b5725c76b0c6d.jar" />
     </item>
     <item
         jar="D:\From Win 8\workspace\blackjack\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\libs\internal_impl-21.0.3.jar"
@@ -16,11 +16,32 @@
         <dex dex="D:\From Win 8\workspace\blackjack\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-f3e3cb7865d5018c676f4a14c011a16472fc315b.jar" />
     </item>
     <item
-        jar="D:\From Win 8\workspace\blackjack\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\classes.jar"
+        jar="C:\workspace\blackjack\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\workspace\blackjack\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-38f49c52da8bd862ce4effe60745d63df6aadd94.jar" />
+    </item>
+    <item
+        jar="C:\Users\kaosp\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="D:\From Win 8\workspace\blackjack\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-807673f766f3c46e7a660ab4498c4224feb9dac9.jar" />
+    </item>
+    <item
+        jar="C:\workspace\blackjack\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="D:\From Win 8\workspace\blackjack\app\build\intermediates\pre-dexed\debug\classes-fb292fa7f81cbe7daf567479599b5725c76b0c6d.jar" />
+        <dex dex="C:\workspace\blackjack\app\build\intermediates\pre-dexed\debug\classes-94ce6c20ea8f7e41aad602fe4f23295d4f3c0723.jar" />
+    </item>
+    <item
+        jar="C:\workspace\blackjack\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\workspace\blackjack\app\build\intermediates\pre-dexed\debug\classes-ca78bcaa932eb5a7467372367ad992601a2dbcf7.jar" />
     </item>
     <item
         jar="D:\From Win 8\workspace\blackjack\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\jars\classes.jar"

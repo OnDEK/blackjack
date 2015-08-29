@@ -19,7 +19,6 @@ public class BlackJack {
         deck.Shuffle(1);
 
         drawCard(dealer);
-
     }
 
     public void drawCard(Player p){
